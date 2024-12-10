@@ -53,3 +53,5 @@ int	main(void)
 	printf("la cadena de destino es:%s", ft_strdup(s1));
 	return (0);
 }
+
+

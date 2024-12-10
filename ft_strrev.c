@@ -1,21 +1,6 @@
 #include <stdio.h>
-/*char *ft_strrev(char *str) {
-    int i = 0;
-    int j = strlen(str) - 1;
-    char temp;
 
-    while (i < j) {
-        temp = str[i];
-        str[i] = str[j];
-        str[j] = temp;
-        i++;
-        j--;
-    }
-
-    return str;
-}*/
-
-char *ft_strrev(char *str)
+/*char *ft_strrev(char *str)
 {
 	int i = -1;
 	int length = 0;
@@ -30,7 +15,27 @@ char *ft_strrev(char *str)
 		str[length - 1 - i] = temporary;
 	}
 	return (str);
+}*/
+char *ft_strrev(char *str)
+{
+	int	i;
+	int	len;
+	char	temp;
+
+	i = 0;
+	len = 0;
+	while (str[len])
+		len++;
+	while (i < len / 2)
+	{
+		temp = str[i];
+		str[i] = str[len -1 - i];
+		str[len -1 -i] = temp;
+		i++;
+	}
+	return (str);
 }
+
 int	main()
 {
 	char str[] = "holamundo";
@@ -43,7 +48,7 @@ int	main()
 	return (0);
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 #include <unistd.h>
 
 void	ft_rev_int_tab(int *tab, int size)
@@ -90,5 +95,5 @@ int	main(void)
 	}
 	printf("\n ");
 	return (0);
-}
+}*/
 
