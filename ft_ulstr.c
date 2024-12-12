@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-/*int main(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	int	i = 0;
 
@@ -49,4 +49,4 @@ int	main(int argc, char **argv)
 		}
 	}
 	write(1, "\n", 1);
-}*/
+}
