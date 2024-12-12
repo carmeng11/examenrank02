@@ -11,6 +11,7 @@ int main(int argc, char **argv)
         while (argv[2][i])
         {
             count = (2 * 97 + 25 - argv[2][i]);
+			 j=  'a' + ('z' - str[])
             write(1, &count, 1);
             i++;
         }
