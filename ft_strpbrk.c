@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*char	*ft_strpbrk(const char *s1, const char *s2)
 {
@@ -21,6 +22,7 @@
 	return (NULL);	 
 }*/
 
+
 char	*ft_strpbrk(const char *s1, const char *s2)
 {
 	int	i;
@@ -34,7 +36,7 @@ char	*ft_strpbrk(const char *s1, const char *s2)
 		while (s2[i])
 		{
 			if (*s1 == s2[i])
-				return (char*)s1;
+				return (char *)s1;
 			i++;
 		}
 		s1++;
@@ -44,10 +46,10 @@ char	*ft_strpbrk(const char *s1, const char *s2)
 int	main()
 {
 	char s1[] = "hola mundo";
-	char *s2;
+	char s2[] = "ae";
 	
-	s2 = NULL;
+	//s2 = NULL;
 
-	printf("La cadena a partir del primer caracter es:%s", ft_strpbrk(s1, s2));
+	printf("La cadena a partir del primer caracter es:%s", strpbrk(s1, s2));
 	return (0);	
 }

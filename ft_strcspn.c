@@ -25,14 +25,35 @@
     return (count);
 }*/
 
+// size_t	ft_strcspn(const char *s, const char *reject)
+// {
+// 	size_t	i;
+// 	size_t	count;
+
+// 	i = 0;
+// 	count = 0;
+// 	while (*s)
+// 	{
+// 		while (reject[i] && *s != reject[i])
+// 			i++;
+// 		if (reject[i] != '\0')
+// 			return (count);
+// 		i = 0;
+// 		count++;
+// 		s++;
+// 	}
+// 	return (count);
+// }
+
+
 size_t	ft_strcspn(const char *s, const char *reject)
 {
-	size_t	i;
-	size_t	count;
+	int	i;
+	int	count;
 
 	i = 0;
-	count = 0;
-	while (*s)
+	count =  0;
+	while(*s)
 	{
 		while (reject[i] && *s != reject[i])
 			i++;
