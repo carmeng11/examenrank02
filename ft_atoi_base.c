@@ -20,19 +20,21 @@ if (str_base < 2 || str_base > 16)
 while (*str)
 {
 	if (*str >= '0' && *str <= '9')
-		value = value * str_base + *str + '0';
+		value = value * str_base + (*str - '0');
 	else if (*str >= 'a' && *str <= 'f')
-		value = value * str_base +(*str - 'a' + 10) + '0';
+		value = value * str_base + (*str - 'a' + 10);
 	else if(*str >= 'A' && *str <= 'F')
-		value = value * str_base +(*str - 'A' + 10) + '0';
-	str++;	
+		value = value * str_base + (*str - 'A' + 10);
+	else
+		break;
+	str++;
 }
 return (sign * value);
 }
 int main() {
-   const char* binaryStr = "10101";      // Base 2
-   const char* octalStr = "25";          // Base 8  
-   const char* hexStr = "1A";            // Base 16
+   const char* binaryStr = "101";      // Base 2
+   const char* octalStr = "25774123";          // Base 8  
+   const char* hexStr = "1FBA23DB";            // Base 16
  
    printf("Binary to Decimal: %d\n", ft_atoi_base(binaryStr, 2));  
    printf("Octal to Decimal: %d\n", ft_atoi_base(octalStr, 8));    
