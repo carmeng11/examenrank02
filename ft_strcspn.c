@@ -46,14 +46,45 @@
 // }
 
 
+// size_t	ft_strcspn(const char *s, const char *reject)
+// {
+// 	int	i;
+// 	int	count;
+
+// 	i = 0;
+// 	count =  0;
+// 	while(*s)
+// 	{
+// 		while (reject[i] && *s != reject[i])
+// 			i++;
+// 		if (reject[i] != '\0')
+// 			return (count);
+// 		i = 0;
+// 		count++;
+// 		s++;
+// 	}
+// 	return (count);
+// }
+// int	main()
+// {
+// 	char s[] = "hola mundo";
+// 	char reject[] = "aeiu";
+
+// 	printf("La longitud de la cadena es:%zu\n", ft_strcspn(s, reject));
+// 	return (0);	
+// }
+
+
 size_t	ft_strcspn(const char *s, const char *reject)
 {
-	int	i;
-	int	count;
 
-	i = 0;
-	count =  0;
-	while(*s)
+int	i;
+int	count;
+
+i = 0;
+count = 0;
+{
+	while (*s)
 	{
 		while (reject[i] && *s != reject[i])
 			i++;
@@ -65,10 +96,12 @@ size_t	ft_strcspn(const char *s, const char *reject)
 	}
 	return (count);
 }
+}
+
 int	main()
 {
 	char s[] = "hola mundo";
-	char reject[] = "aeiu";
+	char reject[] = "aeiou";
 
 	printf("La longitud de la cadena es:%zu\n", ft_strcspn(s, reject));
 	return (0);	
