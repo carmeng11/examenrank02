@@ -31,8 +31,8 @@ int	ft_atoi(char *str)
 		result = result * 10 + *str - '0';
 		str++;
 	}
-	return (result);
 	printf("%d", result);
+	return (result);
 }
 
 void	ft_add_prime_sum(char *str)
@@ -52,8 +52,8 @@ int	main(int argc, char ** argv)
 		//ft_add_prime_sum(argv[1]);
 		ft_atoi(argv[1]);
 
-	if (argc != 2 || argv[1] < 0)
-	write(1, "0", 1);
+	// if (argc != 2 || argv[1] < 0)
+	// write(1, "0", 1);
 	write(1, "\n", 1);
 	return (0);
 }
