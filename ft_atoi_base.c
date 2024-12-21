@@ -45,7 +45,7 @@ return (sign * value);
 }
 int main() {
    const char* binaryStr = "101";      // Base 2
-   const char* octalStr = "2577412312578";          // Base 8  
+   const char* octalStr = "2577";          // Base 8  
    const char* hexStr = "1FBA23DB";            // Base 16
  
    printf("Binary to Decimal: %d\n", ft_atoi_base(binaryStr, 2));  

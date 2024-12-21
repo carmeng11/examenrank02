@@ -18,27 +18,36 @@
 // 	}
 // 	return (sign * result);
 // }
-void	ft_putchar(char nbr)
-{
-	write(1, &nbr, 1);
-}
+
 void	ft_putnbr(int	nbr)
 {
 	int	i;
 
 	i = 0;
 	if (nbr == -2147483648)
-		//write(1, "-2147483648", 11);
-		ft_putchar('-');
-		ft_putchar('2');
-		//ft_putnbr(147483648);
+		write(1, "-2147483648", 11);
+	else if (nbr < 0)
+	{
+		write(1, "-", 1);
+		ft_putnbr(-nbr);
+	}
+	else if (nbr > 9)
+	{
+		ft_putnbr(nbr / 10);
+		i = nbr % 10 + '0';
+		write(1, &i, 1);
+	}
+	else
+	{
+		nbr = nbr + '0';
+		write(1, &nbr, 1);
+	}
 }
 
 int	main()
 {
-	int	n;
+	int	n = -4578799;
 
-	n = -2147483648;
 	ft_putnbr(n);
 	return (0);
 }
