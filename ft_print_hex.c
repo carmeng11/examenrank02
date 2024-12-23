@@ -1,51 +1,61 @@
-int	ft_puthex(unsigned long long n, int bol)
-{
-	char	min;
-	char	may;
-	int		count;
+#include <unistd.h>
+#include <stdio.h>
 
-	count = 0;
-	min = "0123456789abcdef"[n % 16];
-	may = "0123456789ABCDEF"[n % 16];
-	if (n >= 16)
-		count += ft_puthex(n / 16, bol);
-	if (!bol)
-		count += ft_putchar(min);
-	else
-		count += ft_putchar(may);
-	return (count);
-}
-void	ft_print_hex(int n)
+int	ft_atoi( char *str)
 {
-	char	min;
-
-	min = "0123456789abcdef"[n % 16];
-
-}
-int	atoi(char *str)
-{
-	//int	sign;
 	int	result;
-
 	result = 0;
-	// sign = 1;
-	// while (*str = ' ' || (*str >= 9 && *str <= 13))
-	// 	str++;
-	// if (*str == '-')
-	// 	sign = -1;
-	// if	(*str == '-' || *str == '+')
-	// 	str++;
-	while (*str >= '0' && *str <= '9')
+
+	while (*str)
 	{
-		result = result * 10 + *str - '0';
+		result = result *10 + *str -'0';
 		str++;
 	}
 	return (result);
+	//printf("%d", result);
 }
 
-int	main(int argc, char **argv)
+
+void	ft_print_hex(int num)
+{
+	char check_hex[] = "0123456789abcdef";
+
+	if (num >= 16)
+		ft_print_hex(num / 16);
+	write(1, &check_hex[num % 16], 1);
+}
+
+
+int main(int argc, char **argv)
 {
 	if (argc == 2)
-		ft_print_hex(ft_atoi(argv[]));
+		ft_print_hex(ft_atoi(argv[1]));
 	write(1, "\n", 1);
+	return (0);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
