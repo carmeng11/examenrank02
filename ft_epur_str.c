@@ -9,12 +9,11 @@ void	ft_epur_str(char *str)
 			i++;
 	while (str[i])
 	{
-		while (str[i] >= 32 && str[i] <= 126)
-		{
+		if (str[i] > 32 && str[i] < 126)
 			write(1, &str[i], 1);
-			i++;	
-		}
-		if (str[i] == ' ' && str[i +1] && str[i] >= 32 && str[i] <= 126)
+		else if (str[i] == ' ' && (str[i + 1] > 32 && str[i + 1] < 126))
+			write(1, " ", 1);
+		i++;
 	}
 }
 int	main(int argc, char **argv)
