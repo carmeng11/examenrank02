@@ -1,4 +1,4 @@
-//#include <stddef.h>
+#include <string.h>
 #include <stdio.h>
 
 /*size_t	ft_strcspn(const char *s, const char *reject)
@@ -25,84 +25,39 @@
     return (count);
 }*/
 
-// size_t	ft_strcspn(const char *s, const char *reject)
-// {
-// 	size_t	i;
-// 	size_t	count;
-
-// 	i = 0;
-// 	count = 0;
-// 	while (*s)
-// 	{
-// 		while (reject[i] && *s != reject[i])
-// 			i++;
-// 		if (reject[i] != '\0')
-// 			return (count);
-// 		i = 0;
-// 		count++;
-// 		s++;
-// 	}
-// 	return (count);
-// }
-
-
-// size_t	ft_strcspn(const char *s, const char *reject)
-// {
-// 	int	i;
-// 	int	count;
-
-// 	i = 0;
-// 	count =  0;
-// 	while(*s)
-// 	{
-// 		while (reject[i] && *s != reject[i])
-// 			i++;
-// 		if (reject[i] != '\0')
-// 			return (count);
-// 		i = 0;
-// 		count++;
-// 		s++;
-// 	}
-// 	return (count);
-// }
-// int	main()
-// {
-// 	char s[] = "hola mundo";
-// 	char reject[] = "aeiu";
-
-// 	printf("La longitud de la cadena es:%zu\n", ft_strcspn(s, reject));
-// 	return (0);	
-// }
-
 
 size_t	ft_strcspn(const char *s, const char *reject)
 {
+	int	i;
+	int	count;
 
-int	i;
-int	count;
-
-i = 0;
-count = 0;
-{
-	while (*s)
+	i = 0;
+	count =  0;
+	while(*s)
 	{
 		while (reject[i] && *s != reject[i])
 			i++;
 		if (reject[i] != '\0')
 			return (count);
-		i = 0;
+		i = 0;// IMPORTANTE RECUERDA PONERLO A CERO
 		count++;
 		s++;
 	}
 	return (count);
 }
-}
-
 int	main()
 {
 	char s[] = "hola mundo";
-	char reject[] = "aeiou";
+	char reject[] = "aeiu";
 
 	printf("La longitud de la cadena es:%zu\n", ft_strcspn(s, reject));
+	printf("La longitud de la cadena es:%zu\n", strcspn(s, reject));
 	return (0);	
 }
+
+
+// Busca los caracteres de la segunda cadena en la primera y devuelve
+// la longitud hasta el primer caracter encontrado, en el ejemplo
+// devuelve 1 puesto que pasa la h y en la o ya encuentra un caracter del string 2.
+// hay que iterar primero el string 2 y luego el 1, dos while
+

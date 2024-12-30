@@ -85,12 +85,12 @@ int	ft_max(int* tab, unsigned int len)
 
 int main()
 {
-    int tab[] = {1, 7, 3, 6, 5, 9, 18, 21};
+    int tab[] = {1, 7, 3, 23, 5, 9, 18, 21};
 	unsigned int size;
 
 	int	i = 0;
-	size = 7;
-    ft_max(tab, 5);
+	size = 8;
+    ft_max(tab, 8);
     printf("El número max es:");
 	printf("%d ", tab[size - 1]);
     // while (i < size)

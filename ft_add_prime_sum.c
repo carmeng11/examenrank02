@@ -28,6 +28,7 @@ void	ft_putnbr(int n)
 	x = n % 10 + '0';
 	write(1, &x, 1);
 }
+
 //para convertir el número que metemos que es un string a entero
 int	ft_atoi(char *str)
 {
@@ -66,7 +67,7 @@ int	ft_add_prime_sum(int result)
 	}
 //	printf("%d", sum);
 	//return (sum);
-	ft_putnbr(sum); //tenemos que hacer el putnbr de sum para poder imprimir el resultado de la suma
+	ft_putnbr(sum); //tenemos que hacer el putnbr de sum para poder imprimir el resultado de la suma OJO PONERLO ANTES DEL RETURN
 	return (result);
 }
 

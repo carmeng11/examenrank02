@@ -30,7 +30,7 @@ char	*ft_strdup(char *s1)
 	size_t		len;
 
 	len = 0;
-	while (s1[len])
+	while (s1[len])//tengo que saber la longitud de s1 para hacer malloc de len + 1
 		len++;
 
 	dst = malloc(sizeof(char) * (len + 1));

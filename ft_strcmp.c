@@ -8,3 +8,11 @@ int ft_strcmp(char *s1, char *s2)
 		i++;
 	return (s1[i] - s2[i]);
 }
+
+int	main()
+{
+	char	s1[] = "hola";
+	char	s2[] = "hoLa";
+	printf("La diferencia de caracteres es: %d: ", ft_strcmp(s1, s2));
+	return (0);
+}
