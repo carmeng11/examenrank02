@@ -15,7 +15,6 @@ int	ft_is_primo(int result)
 		i++;// si no encontramos ese divisor incrementamos i hasta que sea menor que la raiz cuadrada de result
 	}
 	return (1);
-
 }
 
 //necesitammos el putnbr para imprimir el número
