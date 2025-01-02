@@ -29,21 +29,38 @@ void	ft_rev_wstr(char *str)
 	j = 0;
 	while (str[i])
 		i++;
-	//printf("%c\n", str[i]);
 	i--;
-	printf("%c", str[i]);
-	while (i > 0)
+	//printf("%c", str[i]);
+	while (i >= 0)
 	{
-		if ((str[i] >= 33 && str[i] <= 126) && str[i - 1] == ' ')
+		while (str[i] == ' ' || str[i] == '\t')
+			i--;
+		while (str[i] >= 33 && str[i] <= 126)
+			i--;
+		j = i;
+		while (str[j])
 		{
-			i = j;
-			printf("%c", str[i]);
-			//write(1, &str[j], 1);
+			write(1, &str[j], 1);
+			j++;
 		}
+		j = i;
 		i--;
 	}
-
+	//printf("%c", str[i]);
+	// while (i >= 0)
+	// {
+	// 	if (str[i] == ' ')
+	// 		{
+	// 			i = j;
+	// 			write(1, &str[j], 1);
+				
+	// 		}
+	// 		//j++;
+	// }
+	// i--;
 }
+
+
 int main(int argc, char **argv)
 {
 	if (argc == 2)
