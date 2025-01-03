@@ -156,13 +156,17 @@ void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 #include "ft_list.h"
 
 void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
+// TENEMOS QUE DECLARAR UN PUNTERO *CUR QUE APUNTE AL PRIMER NODO DE LA LISTA
+//COMPARAMOS LOS DATOS DE ESTE PRIMER NODO CON DATA_REF
+//SI SON IGUALES TIENE QUE ELIMINARLO Y PASAR AL SIGUIENTE NODO, LIBERAR MEMORIA DE *CUR Y LLAMAR RECURSIVAMENTE A LA FUNCION
+// 
 //parámetros: Un puntero doble que apunta al inicio de la lista enlazada. 
 //Esto permite modificar el puntero del primer nodo si es necesario (por ejemplo, si se elimina el primer nodo).
 //void *data_ref: Un puntero a los datos que se utilizarán para comparar con los elementos en la lista.
 //int (*cmp)(): Una función de comparación que toma dos argumentos y devuelve 0 si son iguales.
 {
 	if (begin_list == NULL || *begin_list == NULL)
-		return; //su cualquiera de las dos condiciones es nula, la función retorna sin hacer nada
+		return; //si cualquiera de las dos condiciones es nula, la función retorna sin hacer nada
 
 	t_list *cur = *begin_list; //inicializamos un puntero llamado cur que apunta al primer nodo de la lista
 
@@ -178,7 +182,7 @@ void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 	//Esto permite seguir verificando hasta llegar al final de la lista.
 	{
 		cur = *begin_list;
-		ft_list_remove_if(&cur->next, data_ref, cmp);
+		ft_list_remove_if(&cur->next, data_ref, cmp); //DUDA CON EL &
 	}
 }
 
@@ -227,4 +231,7 @@ t_list *sort_list(t_list* lst, int (*cmp)(int, int)) {
     }
     return (start);
 }
+
+
+
 

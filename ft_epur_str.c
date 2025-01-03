@@ -22,3 +22,14 @@ int	main(int argc, char **argv)
 		ft_epur_str(argv[1]);
 	write(1, "\n", 1);
 }
+//LE DIGO QUE SI ENCUENTRA UNA LETRA LA ESCRIBA Y SI ENCUENTRA UN ESPCIO Y LO
+//SIGUIENTE ES UNA LETRA QUE ESCRIBA UN ESPACIO
+// $> ./epur_str "See? It's easy to print the same thing" | cat -e
+// See? It's easy to print the same thing$
+// $> ./epur_str " this        time it      will     be    more complex  . " | cat -e
+// this time it will be more complex .$
+// $> ./epur_str "No S*** Sherlock..." "nAw S*** ShErLaWQ..." | cat -e
+// $
+// $> ./epur_str "" | cat -e
+// $
+// $>
