@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 
+//COMPROBADO
 /*size_t	ft_strcspn(const char *s, const char *reject)
 {
     size_t count;
@@ -45,15 +46,15 @@ size_t	ft_strcspn(const char *s, const char *reject)
 	}
 	return (count);
 }
-int	main()
-{
-	char s[] = "hola mundo";
-	char reject[] = "aeiu";
+// int	main()
+// {
+// 	char s[] = "hola mundo";
+// 	char reject[] = "aeiu";
 
-	printf("La longitud de la cadena es:%zu\n", ft_strcspn(s, reject));
-	printf("La longitud de la cadena es:%zu\n", strcspn(s, reject));
-	return (0);	
-}
+// 	printf("La longitud de la cadena es:%zu\n", ft_strcspn(s, reject));
+// 	printf("La longitud de la cadena es:%zu\n", strcspn(s, reject));
+// 	return (0);	
+// }
 
 
 // Busca los caracteres de la segunda cadena en la primera y devuelve

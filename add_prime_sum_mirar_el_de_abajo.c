@@ -5,7 +5,7 @@ int ft_atoi(char *str)
     int result;
     result = 0;
 
-    while (*str)
+    while (*str) //en el atoi completo es while (*str >= '0' && *str <= '9')
     {
         result = result * 10 + *str - '0';
         str--;
@@ -36,7 +36,7 @@ int is_prime(int num)
             return (0);
         i--;    
     }
-        return (1);    
+    return (1);    
 }
 
 

@@ -122,10 +122,10 @@ void	ft_list_foreach(t_list *begin_list, void (*f)(void *))
 //void (*f)(void *): Este es un puntero a una función que toma un puntero genérico como argumento 
 //y no retorna nada (void). Esta función será aplicada a cada elemento de la lista.
 {
-    while (begin_list)
+    while (begin_list) //La función continúa mientras haya nodos en la lista (es decir, mientras begin_list no sea NULL
     {
-        (*f)(begin_list->data);
-        begin_list = begin_list->next;
+        (*f)(begin_list->data); //Llama a la función apuntada por f, pasando el dato del nodo actual (begin_list->data)
+        begin_list = begin_list->next;//Luego, avanza al siguiente nodo estableciendo begin_list = begin_list->next.
     }
 }
 
@@ -158,24 +158,28 @@ void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 // TENEMOS QUE DECLARAR UN PUNTERO *CUR QUE APUNTE AL PRIMER NODO DE LA LISTA
 //COMPARAMOS LOS DATOS DE ESTE PRIMER NODO CON DATA_REF
-//SI SON IGUALES TIENE QUE ELIMINARLO Y PASAR AL SIGUIENTE NODO, LIBERAR MEMORIA DE *CUR Y LLAMAR RECURSIVAMENTE A LA FUNCION
-// 
+//SI SON IGUALES TIENE QUE ELIMINARLO Y PASAR AL SIGUIENTE NODO, LIBERAR MEMORIA DE *CUR 
+//Y LLAMAR RECURSIVAMENTE A LA FUNCION 
 //parámetros: Un puntero doble que apunta al inicio de la lista enlazada. 
 //Esto permite modificar el puntero del primer nodo si es necesario (por ejemplo, si se elimina el primer nodo).
 //void *data_ref: Un puntero a los datos que se utilizarán para comparar con los elementos en la lista.
 //int (*cmp)(): Una función de comparación que toma dos argumentos y devuelve 0 si son iguales.
 {
 	if (begin_list == NULL || *begin_list == NULL)
+    //Esta línea comprueba si la lista está vacía o no existe (begin_list es NULL o el primer elemento 
+    //apuntado por begin_list es NULL). 
 		return; //si cualquiera de las dos condiciones es nula, la función retorna sin hacer nada
 
 	t_list *cur = *begin_list; //inicializamos un puntero llamado cur que apunta al primer nodo de la lista
 
-	if (cmp(cur->data, data_ref) == 0)//comparación y eliminación data_ref son los datos que se utilizarán para comparar con los elementos en la lista.
+	if (cmp(cur->data, data_ref) == 0)//comparación y eliminación data_ref son los datos que se utilizarán 
+    //para comparar con los elementos en la lista.
 	{
-		*begin_list = cur->next; //si son igules el puntero que apunta al inicio de la lista (*begin_list) se actualiza
-		// para que apunte al siguiente nodo (cur ->next) y elimina el primero
+		*begin_list = cur->next; //si son igules el puntero que apunta al inicio de la lista (*begin_list) se 
+        //actualiza para que apunte al siguiente nodo (cur ->next) y elimina el primero
 		free(cur);//se libera la memoria del nodo eliminado
-		ft_list_remove_if(begin_list, data_ref, cmp);//se llama recursivamente a ft_list_remove_if para continuar buscando nodos que deban ser eliminados
+		ft_list_remove_if(begin_list, data_ref, cmp);//se llama recursivamente a ft_list_remove_if para continuar 
+        //buscando nodos que deban ser eliminados
 	}
 	else // Si el dato en el nodo actual no coincide con `data_ref`, la función llama recursivamente a sí misma 
 	//para procesar el siguiente nodo en la lista (mediante `&cur->next`). 
@@ -211,23 +215,50 @@ void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 #include <stdlib.h>
 #include "list.h"
 
-t_list *sort_list(t_list* lst, int (*cmp)(int, int)) {
+t_list *sort_list(t_list* lst, int (*cmp)(int, int)) 
+//t_list* lst: Es un puntero a la cabeza de la lista enlazada que se quiere ordenar. 
+//lst es el nodo actual de la lista que se va recorriendo.
+{
+    //int (*cmp)(int, int): Es un puntero a una función de comparación que toma dos enteros 
+    //como argumentos y devuelve un valor entero. Esta función de comparación se usa para 
+    //decidir el orden relativo entre dos elementos. La firma del puntero de función cmp 
+    //puede ser algo como:
+//int compare(int a, int b);
+//Si cmp(a, b) devuelve un valor negativo, a es menor que b.
+//Si devuelve cero, a es igual a b.
+//Si devuelve un valor positivo, a es mayor que b.
     int swap;
     t_list *start;
 
-    start = lst;
+    start = lst;//Se guarda una referencia a la cabeza de la lista en start para poder devolverla 
+    //más tarde, ya que la función cambiará la lista, pero es importante devolver la cabeza original de la lista ordenada.
 
     while (lst != NULL && lst->next != NULL)
+    //Este bucle recorre la lista, y la condición lst != NULL && lst->next != NULL asegura que solo se ejecutará mientras 
+    //haya más de un nodo en la lista. De esta manera, la lista no se recorrerá indefinidamente.
     {
         if ((*cmp)(lst->data, lst->next->data) == 0)
+        //Aquí se llama a la función de comparación (cmp) con los valores de datos de dos nodos consecutivos:
+        //el nodo actual (lst->data) y el siguiente nodo (lst->next->data). Si la comparación devuelve 0 
+        //(es decir, si lst->data y lst->next->data son "iguales" según el criterio de comparación), 
+        //entonces se realiza un intercambio de sus valores de datos.
+
+
 	{
+        //Si la comparación indica que los valores son iguales, se intercambian los datos entre el nodo actual 
+        //y el siguiente. El intercambio de valores se realiza con una variable temporal swap.
             swap = lst->data;
             lst->data = lst->next->data;
             lst->next->data = swap;
             lst = start;
         }
 	else
+    //Después de realizar el intercambio, se vuelve al principio de la lista para reiniciar el proceso de comparación, 
+    //ya que al hacer un intercambio, es posible que se haya alterado el orden en los nodos previos a la posición actual.
+
 		lst = lst->next;
+        //Si no se realizó un intercambio (es decir, si lst->data y lst->next->data no son iguales según cmp), 
+        //entonces simplemente se avanza al siguiente nodo en la lista.
     }
     return (start);
 }

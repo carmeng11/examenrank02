@@ -9,7 +9,7 @@ void	ft_putnbr(int n)
 	x = n % 10 + '0';
 	write(1, &x, 1);
 }
-
+//cuidado que en la solución aparece completo aunque sin la commprobación de signo
 int	atoi(char *str)
 {
 	int	result;

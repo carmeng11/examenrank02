@@ -1,58 +1,72 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cagomez- <cagomez-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/11 20:12:32 by cagomez-          #+#    #+#             */
+/*   Updated: 2025/01/07 15:58:53 by cagomez-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <stdio.h>
 
-int nlen(int nbr)
+int	count_int(int nbr)
 {
-	int i;
+	int	count;
+	long	n;
 
+	n = nbr;
+	count = 0;
+	if (nbr < 0)
+	{
+		count++;
+		nbr = -nbr;
+	}
 	if (nbr == 0)
-		return (1);
-	i = 0;
+		count++;
 	while (nbr != 0)
 	{
-		nbr /= 10;
-		i++;
+		nbr = nbr / 10;
+		count++;
 	}
-	return (i);
-}
-
-int ft_abs(int nbr)
-{
-	if (nbr < 0)
-		return (-nbr);
-	return (nbr);
+	return (count);
 }
 
 char	*ft_itoa(int nbr)
 {
-	char *cnum;
-	int len;
-	int i;
+	int		len;
+	char	*result;
 
-	len = nlen(nbr);
-	i = 0;
-	if (nbr < 0)
-		i++;
-	len = len + i;
-	cnum = (char *)malloc((len + 1) * sizeof(char));
-	if (!cnum)
+	len = count_int(nbr);
+	result = malloc((len + 1) * sizeof(char));
+	
+	if (!result)
 		return (NULL);
-	cnum[0] = '-';
-	cnum[len] = '\0';
-	while ((len - 1) >= i)
+	if (nbr == 0)
+		result[0] = '0';
+		if (nbr < 0)
 	{
-		cnum[len - 1] = ft_abs(nbr % 10) + '0';
-		nbr /= 10;
+		nbr = -nbr;
+		result[0] = '-';
+	}
+	result[len] = '\0';
+	while (nbr != 0)
+	{
+		result[len - 1] = (nbr % 10) + '0';
+		nbr = nbr / 10;
 		len--;
 	}
-	return (cnum);
+	return (result);
 }
 
 int	main(void)
 {
 	int n;
 
-	n = -456;
+	n = -2147483647;
 	printf("La cadena convertida es %s", ft_itoa(n));
 	return (0);
 }
