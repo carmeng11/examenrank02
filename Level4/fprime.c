@@ -1,3 +1,4 @@
+//COMPROBADO
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -70,14 +71,32 @@ int	main(int argc, char *argv[])
 			if (number % i == 0) //si hay una división exacta indica que i es un factor de n
 			{
 				printf("%d", i);
-				if (number == i)
+				if (number == i) //si number coincide con el divisor que es el número primo ya acaba y salimos 
 					break ;
 				printf("*");
 				number /= i;
-				i = 1;
+				i = 1; //lo igualo a 1 para que se repitan factores primos
 			}
 		}
 	}
 	printf("\n");
 	return (0);
 }
+// Examples:
+
+// $> ./fprime 225225 | cat -e
+// 3*3*5*5*7*11*13$
+// $> ./fprime 8333325 | cat -e
+// 3*3*5*5*7*11*13*37$
+// $> ./fprime 9539 | cat -e
+// 9539$
+// $> ./fprime 804577 | cat -e
+// 804577$
+// $> ./fprime 42 | cat -e
+// 2*3*7$
+// $> ./fprime 1 | cat -e
+// 1$
+// $> ./fprime | cat -e
+// $
+// $> ./fprime 42 21 | cat -e
+// $
