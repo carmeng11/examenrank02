@@ -75,7 +75,7 @@ int	main(int argc, char *argv[])
 					break ;
 				printf("*");
 				number /= i;
-				i = 1; //lo igualo a 1 para que se repitan factores primos
+				i = 1; //hay que establecer i a 1 para poder tener factores repetidos y que no incremente i uno más a su valor actual
 			}
 		}
 	}
