@@ -111,3 +111,29 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
+void	ft_repeat_alpha(char *str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (str[i])
+	{	
+		j = str[i];
+		while ((j > 'a' && j < 'z') || (j > 'A' && j < 'Z') )
+		{	
+			write(1, &str[i], 1),
+			j--;
+        }
+		write(1, &str[i], 1);
+		i++;
+	}
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc == 2)
+		ft_repeat_alpha(argv[1]);
+	write(1, "\n", 1);
+}
+
