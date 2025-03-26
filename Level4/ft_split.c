@@ -152,28 +152,51 @@ char	**ft_split(char *str)
 // 	return (res);
 // }
 
-int main()
-{
-	char	s[] = "////hi /worl/// bye/ how/are/you";
+// int main()
+// {
+// 	char	s[] = "////hi /worl/// bye/ how/are/you";
 	
-	char	**res;
+// 	char	**res;
 
 	
-	int i = 0;
-	res = ft_split(s);
-	if (res == NULL)
-	{
-		printf("Error.\n");
-		return (1);
-	}
-	for 
-		(int i = 0; 
-		res[i] != NULL; 
-		i++)
-	{
-		printf("Palabra %d: %s\n", i + 1, res[i]);
-		free(res[i]);
-	}
-	free(res);
-	return (0);	
+// 	int i = 0;
+// 	res = ft_split(s);
+// 	if (res == NULL)
+// 	{
+// 		printf("Error.\n");
+// 		return (1);
+// 	}
+// 	for 
+// 		(int i = 0; 
+// 		res[i] != NULL; 
+// 		i++)
+// 	{
+// 		printf("Palabra %d: %s\n", i + 1, res[i]);
+// 		free(res[i]);
+// 	}
+// 	free(res);
+// 	return (0);	
+// }
+
+int main() {
+    char s[] = "////hi /worl/// bye/ how/are/you";
+    char **res;
+
+    res = ft_split(s);
+    if (res == NULL) {
+        printf("Error.\n");
+        return (1);
+    }
+
+    // Usamos un bucle while para imprimir las palabras
+    int i = 0;
+    while (res[i] != NULL) 
+	0{
+        printf("Palabra %d: %s\n", i + 1, res[i]);
+        free(res[i]); // Liberamos la memoria de cada palabra
+        i++;
+    }
+    free(res); // Liberamos la memoria del arreglo de punteros
+
+    return 0;
 }

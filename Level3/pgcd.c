@@ -14,9 +14,9 @@ int main(int argc, char const **argv)
 		n1 = atoi(argv[1]);  //IMPORTANTE PONERO DENTRO DEL IF
     	n2 = atoi(argv[2]);
     	if (n1 > n2)
-        x = n2;
+            x = n2;
     	else
-        x = n1;;
+            x = n1;;
     	while (x > 0)
     	{
         	if (n1 % x == 0 && n2 % x == 0)
